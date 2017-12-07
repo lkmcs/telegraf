@@ -15,7 +15,7 @@ import (
 const sampleConfig = `
   ## This plugin reads metrics exposed by Logstash Monitoring API.
   #
-  # logstashURL = "http://localhost:9600"
+  # URL = "http://localhost:9600"
   URL = "http://localhost:9600"
 `
 const jvmStats = "/_node/stats/jvm"
