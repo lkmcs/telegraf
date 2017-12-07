@@ -15,7 +15,7 @@ import (
 const sampleConfig = `
   ## This plugin reads metrics exposed by Logstash Monitoring API.
   #
-  # logstashURL = "http://localhost:9600"
+  # URL = "http://localhost:9600"
   URL = "http://localhost:9600"
 `
 const jvmStats = "/_node/stats/jvm"
@@ -202,6 +202,7 @@ func (l *Logstash) gatherPipelineStats(url string, acc telegraf.Accumulator) err
 		}
 		tags := map[string]string{
 			"plugin": plugin.Name,
+			"id":     plugin.ID,
 			"type":   "input",
 		}
 		acc.AddFields("logstash_plugins", fields, tags)
@@ -232,6 +233,7 @@ func (l *Logstash) gatherPipelineStats(url string, acc telegraf.Accumulator) err
 		}
 		tags := map[string]string{
 			"plugin": plugin.Name,
+			"id":     plugin.ID,
 			"type":   "output",
 		}
 		acc.AddFields("logstash_plugins", fields, tags)
