@@ -202,6 +202,7 @@ func (l *Logstash) gatherPipelineStats(url string, acc telegraf.Accumulator) err
 		}
 		tags := map[string]string{
 			"plugin": plugin.Name,
+			"id":     plugin.ID,
 			"type":   "input",
 		}
 		acc.AddFields("logstash_plugins", fields, tags)
@@ -232,6 +233,7 @@ func (l *Logstash) gatherPipelineStats(url string, acc telegraf.Accumulator) err
 		}
 		tags := map[string]string{
 			"plugin": plugin.Name,
+			"id":     plugin.ID,
 			"type":   "output",
 		}
 		acc.AddFields("logstash_plugins", fields, tags)
