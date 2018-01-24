@@ -66,6 +66,7 @@ This plugin reads metrics exposed by [Logstash Monitoring API](https://www.elast
 - logstash_plugins
   There are 3 categories, input, filter, output. For each will be separate measurement consisting:
       - tags
+        - id (the id of the plugin configured fia logstash)
         - type (input|filter|output)
         - plugin (name of the plugin, eg:beats, stdout)
       - fields
@@ -78,9 +79,17 @@ This plugin reads metrics exposed by [Logstash Monitoring API](https://www.elast
 
 ```
 $ ./telegraf -config telegraf.conf -input-filter logstash -test
-> logstash_jvm,node_id=04f508ba-8ad5-466b-9b23-02ec71cba42e,host=laptop mem_non_heap_committed_in_bytes=99561472,mem_pools_young_max_in_bytes=279183360,mem_pools_old_committed_in_bytes=724828160,mem_heap_used_percent=21,mem_pools_survivor_peak_used_in_bytes=34865152,mem_pools_old_used_in_bytes=37868216,gc_collectors_old_collection_time_in_millis=568,threads_peak_count=33,mem_pools_young_peak_used_in_bytes=279183360,mem_heap_committed_in_bytes=1038876672,mem_non_heap_used_in_bytes=92957192,mem_pools_survivor_used_in_bytes=34865152,mem_pools_young_committed_in_bytes=279183360,gc_collectors_young_collection_time_in_millis=1605,mem_heap_max_in_bytes=1038876672,mem_heap_used_in_bytes=218198056,mem_pools_old_max_in_bytes=724828160,gc_collectors_young_collection_count=5,mem_pools_old_peak_max_in_bytes=724828160,mem_pools_young_used_in_bytes=145464688,mem_pools_survivor_committed_in_bytes=34865152,mem_pools_old_peak_used_in_bytes=85451288,mem_pools_young_peak_max_in_bytes=279183360,gc_collectors_old_collection_count=2,uptime_in_millis=119806,threads_count=33,mem_pools_survivor_peak_max_in_bytes=34865152,mem_pools_survivor_max_in_bytes=34865152 1512382629000000000
-> logstash_process,node_id=04f508ba-8ad5-466b-9b23-02ec71cba42e,host=laptop cpu_load_average_5m=1.05,open_file_descriptors=110,mem_total_virtual_in_bytes=4857896960,cpu_percent=5,cpu_load_average_1m=1.01,peak_open_file_descriptors=110,max_file_descriptors=1048576,cpu_total_in_millis=97420,cpu_load_average_15m=0.91 1512382629000000000
-> logstash_events,node_id=04f508ba-8ad5-466b-9b23-02ec71cba42e,host=laptop duration_in_millis=2,in=3,out=3,filtered=0,queue_push_duration_in_millis=1 1512382629000000000
-> logstash_plugins,type=input,plugin=beats,host=laptop queue_push_duration_in_millis=2,duration_in_millis=0,in=5,out=5 1512382629000000000
-> logstash_plugins,host=laptop,type=output,plugin=stdout in=6,out=6,duration_in_millis=3 1512382629000000000
-```
+* Plugin: inputs.logstash, Collection 1
+> logstash_jvm,host=gevislogstp1at.eb.lan.at,node_id=3e440eb1-816b-4000-9e13-050660045aad mem_pools_old_committed_in_bytes=7892041728,mem_pools_old_peak_used_in_bytes=5968082504,gc_collectors_young_collection_time_in_millis=385667,uptime_in_millis=63652303,mem_pools_survivor_committed_in_bytes=69730304,mem_pools_old_used_in_bytes=722930960,mem_heap_committed_in_bytes=8520204288,mem_pools_survivor_peak_max_in_bytes=69730304,mem_pools_old_max_in_bytes=7892041728,mem_pools_young_peak_used_in_bytes=558432256,mem_pools_young_peak_max_in_bytes=558432256,gc_collectors_old_collection_time_in_millis=498,mem_heap_max_in_bytes=8520204288,mem_heap_used_in_bytes=799671248,mem_non_heap_used_in_bytes=138960288,mem_pools_survivor_peak_used_in_bytes=69730304,mem_heap_used_percent=9,gc_collectors_old_collection_count=5,threads_peak_count=71,mem_non_heap_committed_in_bytes=150446080,mem_pools_survivor_max_in_bytes=69730304,mem_pools_old_peak_max_in_bytes=7892041728,mem_pools_survivor_used_in_bytes=16014640,mem_pools_young_committed_in_bytes=558432256,mem_pools_young_used_in_bytes=60725648,mem_pools_young_max_in_bytes=558432256,gc_collectors_young_collection_count=26102,threads_count=69 1516779590000000000
+> logstash_process,node_id=3e440eb1-816b-4000-9e13-050660045aad,host=gevislogstp1at.eb.lan.at peak_open_file_descriptors=247,mem_total_virtual_in_bytes=15172792320,cpu_load_average_1m=4.69,cpu_total_in_millis=93515080,open_file_descriptors=235,max_file_descriptors=16384,cpu_percent=53,cpu_load_average_15m=3.32,cpu_load_average_5m=3.9 1516779590000000000
+> logstash_events,host=gevislogstp1at.eb.lan.at,node_id=3e440eb1-816b-4000-9e13-050660045aad filtered=49036967,out=49036592,queue_push_duration_in_millis=11373589,duration_in_millis=181516470,in=49037595 1516779590000000000
+> logstash_plugins,host=gevislogstp1at.eb.lan.at,type=input,id=100_001_1,plugin=beats queue_push_duration_in_millis=11373589,duration_in_millis=0,in=0,out=49037595 1516779590000000000
+> logstash_plugins,type=filter,id=200_006_angpA,plugin=useragent,host=gevislogstp1at.eb.lan.at duration_in_millis=0,in=0,out=0 1516779590000000000
+> logstash_plugins,plugin=useragent,host=gevislogstp1at.eb.lan.at,type=filter,id=202_007_prestoWeb duration_in_millis=610365,in=23279887,out=23279887 1516779590000000000
+> logstash_plugins,type=filter,id=202_010_prestoGrp,plugin=mutate,host=gevislogstp1at.eb.lan.at duration_in_millis=2428,in=76790,out=76790 1516779590000000000
+> logstash_plugins,id=201_009_stsWeb,plugin=geoip,host=gevislogstp1at.eb.lan.at,type=filter duration_in_millis=211976,in=10906494,out=10906494 1516779590000000000
+> logstash_plugins,host=gevislogstp1at.eb.lan.at,type=filter,id=201_010_stsWeb,plugin=kv duration_in_millis=496762,in=10906494,out=10906494 1516779590000000000
+> logstash_plugins,host=gevislogstp1at.eb.lan.at,type=filter,id=201_007_stsWeb,plugin=mutate out=10906494,duration_in_millis=301181,in=10906494 1516779590000000000
+> logstash_plugins,type=filter,id=202_001_prestoWeb,plugin=grok,host=gevislogstp1at.eb.lan.at duration_in_millis=11267769,in=23279890,out=23279887 1516779590000000000
+> logstash_plugins,type=filter,id=202_006_prestoWeb,plugin=kv,host=gevislogstp1at.eb.lan.at out=23279887,duration_in_millis=1064133,in=23279887 1516779590000000000
+> logstash_plugins,id=202_008_prestoGrp,plugin=grok,host=gevislogstp1at.eb.lan.at,type=filter duration_in_millis=19283,in=76790,out=76790 151677959000000000```

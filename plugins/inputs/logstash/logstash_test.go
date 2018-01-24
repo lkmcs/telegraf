@@ -210,7 +210,8 @@ func Test_gatherPipelineStats(t *testing.T) {
 			"out":                           float64(2.0),
 		},
 		map[string]string{
-			"plugin": string("beats"),
+            "id":     string("a35197a509596954e905e38521bae12b1498b17d-1"),
+            "plugin": string("beats"),
 			"type":   string("input"),
 		})
 
@@ -223,7 +224,8 @@ func Test_gatherPipelineStats(t *testing.T) {
 			"out":                float64(1269.0),
 		},
 		map[string]string{
-			"plugin": string("stdout"),
+            "id":     string("582d5c2becb582a053e1e9a6bcc11d49b69a6dfd-2"),
+            "plugin": string("stdout"),
 			"type":   string("output"),
 		})
 
@@ -236,7 +238,8 @@ func Test_gatherPipelineStats(t *testing.T) {
 			"out":                float64(1269.0),
 		},
 		map[string]string{
-			"plugin": string("s3"),
+            "id":     string("582d5c2becb582a053e1e9a6bcc11d49b69a6dfd-3"),
+            "plugin": string("s3"),
 			"type":   string("output"),
 		})
 }

@@ -204,6 +204,7 @@ func (l *Logstash) gatherPipelineStats(url string, acc telegraf.Accumulator) err
 			"out":                           plugin.Events.Out,
 		}
 		tags := map[string]string{
+            "id":     plugin.ID,
 			"plugin": plugin.Name,
 			"type":   "input",
 		}
@@ -219,6 +220,7 @@ func (l *Logstash) gatherPipelineStats(url string, acc telegraf.Accumulator) err
 			"out":                plugin.Events.Out,
 		}
 		tags := map[string]string{
+            "id":     plugin.ID,
 			"plugin": plugin.Name,
 			"type":   "filter",
 		}
@@ -234,6 +236,7 @@ func (l *Logstash) gatherPipelineStats(url string, acc telegraf.Accumulator) err
 			"out":                plugin.Events.Out,
 		}
 		tags := map[string]string{
+            "id":     plugin.ID,
 			"plugin": plugin.Name,
 			"type":   "output",
 		}
